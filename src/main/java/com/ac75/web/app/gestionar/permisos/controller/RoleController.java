@@ -126,4 +126,21 @@ public class RoleController {
 				
 	}
 	
+	@GetMapping("listarRolesSinAsignar/{idPersona}")
+	public ResponseEntity<Object> getAllRolesSinAsignar(@PathVariable Long idPersona){
+		
+		HashMap<String, Object> datos= new HashMap<>();
+		
+		try {
+			  List<Role> rolesSinAsignar = roleService.getAllRolesSinAsignar(idPersona);
+			  datos.put("roles", rolesSinAsignar); 
+			  datos.put("Msj", "Lista de roles sin asignar a la persona"); 
+			  datos.put("Status", "sucess"); 
+			  
+			  return new ResponseEntity<>(datos, HttpStatus.OK);
+		} catch (Exception e) {
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error, pérdida de conexión", e);
+		}
+	}
+	
 }

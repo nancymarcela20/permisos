@@ -14,4 +14,7 @@ public interface IRoleRepository extends JpaRepository<Role, Long>{
 	@Query("SELECT r FROM Role r WHERE r.estado = 1")
 	List<Role> findAllRolesActive();
 	
+	@Query("SELECT r FROM Role r WHERE r.estado=1 and r not in (SELECT p.roles FROM Persona p WHERE p.id=?1)")
+    List<Role> findAllRolesSinAsignar(Long id);
+	
 }

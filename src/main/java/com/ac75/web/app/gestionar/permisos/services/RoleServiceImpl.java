@@ -79,6 +79,11 @@ public class RoleServiceImpl implements IRoleService{
 		
 	}
 
+	@Override
+	public List<Role> getAllRolesSinAsignar(Long idPersona) {
+		return roleRepository.findAllRolesSinAsignar(idPersona);
+	}
+
 	
 	
 }

@@ -16,6 +16,8 @@ public interface IRoleService {
 	
 	List<Role> getAllRolesActive();
 	
+	List<Role> getAllRolesSinAsignar(Long idPersona);
+	
 	void delete(Long id) throws Exception;
 	
 }
